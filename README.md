@@ -1,61 +1,100 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Laravel School Management System (SMS)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A full-stack, comprehensive School Management System built with **Laravel** and **Blade/Livewire** (or **Blade/Bootstrap**). This system is designed to manage core administrative and academic workflows for educational institutions, supporting four distinct user roles.
 
-## About Laravel
+## 🚀 Key Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+This system provides a full set of functionalities necessary for daily school operations:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 👤 User Roles & Authentication
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+* **Admin:** Full control over the system, including user and curriculum management.
+* **Teacher:** Manages students, records attendance, and inputs grades for assigned subjects.
+* **Student:** Views personal schedule, attendance history, and grades.
+* **Parent/Guardian:** Monitors children's grades, attendance, and receives absence notifications.
 
-## Learning Laravel
+### 📚 Core Academic Modules
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+* **Curriculum Management (Admin):** CRUD operations for Grades, Sections, and Subjects.
+* **Teacher Assignment (Admin):** Linking Teachers to specific Sections and Subjects.
+* **Timetable System (Admin, Teacher, Student):** Full system for creating, viewing, and managing class schedules organized by day and time.
+* **My Subjects / My Students (Teacher):** Dedicated views showing assigned courses and students.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### ✅ Operational Modules
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+* **Attendance Management:** Teacher records daily attendance (Present/Absent/Late). Students and Admins view historical reports.
+* **Grading System:** Teacher inputs scores for subjects. Grades are displayed to Students and Parents with color-coded alerts.
+* **Parent Notifications:** Real-time database notifications are triggered and displayed to parents when a child is marked **Absent**.
 
-## Laravel Sponsors
+## 🛠️ Installation and Setup
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Follow these steps to get your local environment running:
 
-### Premium Partners
+### Prerequisites
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+* PHP >= 8.1
+* Composer
+* Node.js & npm
+* MySQL or other supported database
 
-## Contributing
+### Steps
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+1.  **Clone the Repository:**
+    ```bash
+    git clone [https://github.com/MazenAli2/Laravel-School-Management-System.git](https://github.com/MazenAli2/Laravel-School-Management-System.git)
+    cd Laravel-School-Management-System
+    ```
 
-## Code of Conduct
+2.  **Install PHP Dependencies:**
+    ```bash
+    composer install
+    ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+3.  **Install JavaScript Dependencies & Build Assets:**
+    ```bash
+    npm install
+    npm run build
+    ```
 
-## Security Vulnerabilities
+4.  **Environment Configuration:**
+    * Duplicate the example environment file:
+        ```bash
+        cp .env.example .env
+        ```
+    * Generate a new application key:
+        ```bash
+        php artisan key:generate
+        ```
+    * Update your database credentials (`DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`) in the `.env` file.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+5.  **Run Migrations and Seeders:**
+    * Run the database migrations to create all necessary tables:
+        ```bash
+        php artisan migrate
+        ```
+    * (Optional) If you have a Seeder for initial data (Admin user, dummy students, etc.), run it:
+        ```bash
+        php artisan db:seed
+        ```
 
-## License
+6.  **Start the Server:**
+    ```bash
+    php artisan serve
+    ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 🔑 Default Login Credentials
+
+Use these credentials to test the system after running the initial seeder:
+
+| Role | Email | Password |
+| :--- | :--- | :--- |
+| **Admin** | `admin@school.com` | `password` |
+| **Teacher** | `teacher@school.com` | `password` |
+| **Student** | `student@school.com` | `password` |
+| **Parent** | `parent@school.com` | `password` |
+
+*(Note: These default emails assume you have corresponding users created in your database seeding.)*
+
+## 🤝 Contribution
+
+If you plan to continue developing this project, feel free to fork the repository.
